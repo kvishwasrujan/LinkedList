@@ -11,12 +11,12 @@ public class MyLinkedList {
 
 	public void add(INode newNode) {
 	if(this.tail == null)
-		this.tail =newNode ;
+		this.tail = newNode;
 	if(this.head == null)
-		this.head =newNode ;
+		this.head = newNode;
 	else {
 		INode tempNode = this.head;
-		this.head =newNode ;
+		this.head = newNode;
 		this.head.setNext(tempNode);
 		}
 	}
@@ -49,6 +49,12 @@ public class MyLinkedList {
 		INode tempNode = myNode.getNext();
 		myNode.setNext(newNode);
 		newNode.setNext(tempNode);
+	}
+	
+	public INode pop() {
+		INode tempNode = head.getNext();
+		this.head = head.getNext();
+		return tempNode;
 	}
 		}
 	
