@@ -9,7 +9,29 @@ public class MyLinkedList {
 		this.tail = null;
 	}
 
+	public void add(INode newNode) {
+	if(this.tail == null)
+		this.tail =newNode ;
+	if(this.head == null)
+		this.head =newNode ;
+	else {
+		INode tempNode = this.head;
+		this.head =newNode ;
+		this.head.setNext(tempNode);
+		}
+	}
 	
+	public void append(INode newNode) {
+		if(this.tail == null)
+			this.tail = newNode;
+		if(this.head == null)
+			this.head = newNode;
+		else {
+			this.tail.setNext(newNode);
+			this.tail = newNode;
+		}
+	}
+
 	public void printMyNodes() {
 		StringBuffer myNodes = new StringBuffer("My Nodes: ");
 		INode tempNode = head;
@@ -22,18 +44,11 @@ public class MyLinkedList {
 		myNodes.append(tempNode.getKey());
 		System.out.println(myNodes);
 	}
-
-
-	public void add(INode newNode) {
-		// TODO Auto-generated method stub
-		if(this.tail == null)
-			this.tail = newNode ;
-		if(this.head == null)
-			this.head =newNode ;
-		else {
-			this.tail=null;
-			this.tail =newNode ;
-		}
+	
+	public void insert(INode myNode,INode newNode) {
+		INode tempNode = myNode.getNext();
+		myNode.setNext(newNode);
+		newNode.setNext(tempNode);
 	}
 		}
 	
