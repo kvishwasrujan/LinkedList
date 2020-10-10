@@ -1,8 +1,8 @@
 package com.Capgemini.LinkedList;
 
-	public class MyNode<K> {
+	public class MyNode<K> implements INode<K> {
 		private K key;
-		private MyNode next;
+		private INode<K> next;
 		
 		public MyNode(K key) {
 			this.key = key;
@@ -17,12 +17,13 @@ package com.Capgemini.LinkedList;
 			this.key = key;
 		}
 
-		public MyNode getNext() {
+		public INode<K> getNext() {
 			return next;
 		}
-
-		public void setNext(MyNode next) {
-			this.next = next;
+		
+		@Override
+		public void setNext(INode next) {
+			this.next =(MyNode<K>) next;
 		}
 		
 	}
