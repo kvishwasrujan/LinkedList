@@ -77,4 +77,18 @@ public class MyLinkedList<K> {
 		}
 		return null;
 	}
+
+	public INode searchAndInsert(K key, INode newNode) {
+		INode tempNode = head;
+		while (tempNode != null && tempNode.getNext() != null) {
+			if (tempNode.getKey().equals(key)) {
+				break;
+			} else
+				tempNode = tempNode.getNext();
+		}
+		INode tempNode2 = tempNode.getNext();
+		tempNode.setNext(newNode);
+		newNode.setNext(tempNode2);
+		return tempNode;
+	}
 }
