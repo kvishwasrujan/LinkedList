@@ -3,6 +3,7 @@ package com.Capgemini.LinkedList;
 public class MyLinkedList<K> {
 	public INode head;
 	public INode tail;
+	public int size = 0;
 
 	public MyLinkedList() {
 		this.head = null;
@@ -19,6 +20,7 @@ public class MyLinkedList<K> {
 			this.head = newNode;
 			this.head.setNext(tempNode);
 		}
+		size++;
 	}
 
 	public void append(INode newNode) {
@@ -30,6 +32,7 @@ public class MyLinkedList<K> {
 			this.tail.setNext(newNode);
 			this.tail = newNode;
 		}
+		size++;
 	}
 
 	public void printMyNodes() {
@@ -49,11 +52,13 @@ public class MyLinkedList<K> {
 		INode tempNode = myNode.getNext();
 		myNode.setNext(newNode);
 		newNode.setNext(tempNode);
+		size++;
 	}
 
 	public INode pop() {
 		INode tempNode = this.head;
 		this.head = head.getNext();
+		size--;
 		return tempNode;
 	}
 
@@ -64,6 +69,7 @@ public class MyLinkedList<K> {
 		}
 		this.tail = tempNode;
 		tempNode = tempNode.getNext();
+		size--;
 		return tempNode;
 	}
 
@@ -89,6 +95,24 @@ public class MyLinkedList<K> {
 		INode tempNode2 = tempNode.getNext();
 		tempNode.setNext(newNode);
 		newNode.setNext(tempNode2);
+		size++;
 		return tempNode;
+	}
+
+	public INode searchAndRemove(K key) {
+		INode tempNode = head;
+		while (tempNode != null && tempNode.getNext() != null) {
+			if (tempNode.getNext().getKey().equals(key)) {
+				break;
+			} else
+				tempNode = tempNode.getNext();
+		}
+		tempNode.setNext(tempNode.getNext().getNext());
+		size--;
+		return tempNode;
+	}
+
+	public int size() {
+		return size;
 	}
 }
