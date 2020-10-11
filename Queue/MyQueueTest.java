@@ -5,7 +5,6 @@ import static org.junit.jupiter.api.Assertions.*;
 import org.junit.jupiter.api.Test;
 import com.Capgemini.LinkedList.*;
 class MyQueueTest {
-
 	@Test
 	public void given3Numbers_WhenEnqueued_ShouldHaveAddedToLast() {
 		MyQueue myQueue = new MyQueue();
@@ -18,5 +17,15 @@ class MyQueueTest {
 		myQueue.printQueue();
 		assertEquals((int)myThirdNode.getKey(), 70);
 	}
-
+	
+	@Test
+	public void given3Numbers_dequeued_ShouldRemoveFirstNode() {
+		MyQueue myQueue = new MyQueue();
+		MyNode<Integer> myFirstNode = new MyNode<Integer>(56);
+		MyNode<Integer> mySecondNode = new MyNode<Integer>(30);
+		MyNode<Integer> myThirdNode = new MyNode<Integer>(70);
+		myQueue.dequeue();
+		assertEquals((int)myFirstNode.getKey(), 56);
+	}
+	
 }
