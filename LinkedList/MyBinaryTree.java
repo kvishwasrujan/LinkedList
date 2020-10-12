@@ -3,6 +3,7 @@ package com.Capgemini.LinkedList;
 public class MyBinaryTree<K extends Comparable<K>> {
 	private MyBinaryNode<K> root;
 
+	// adding given value
 	public void add(K key) {
 		this.root = this.addRecursively(root, key);
 	}
@@ -21,12 +22,13 @@ public class MyBinaryTree<K extends Comparable<K>> {
 		return current;
 	}
 
-	public int getsize() {
-		return this.getRecursiveSize(root);
-	}
-
 	private int getRecursiveSize(MyBinaryNode<K> current) {
 		return current == null ? 0 : 1 + this.getRecursiveSize(current.left) + this.getRecursiveSize(current.right);
+	}
+
+	// printing size of a tree
+	public int getSize() {
+		return this.getRecursiveSize(root);
 	}
 
 }
